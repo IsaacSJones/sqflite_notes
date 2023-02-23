@@ -22,30 +22,26 @@ class NotesDatabase {
 
   Future<Database> _initDB(String filePath) async {
 
-    final dbPath = await getDatabasesPath();
-    //final dbDir = await getApplicationDocumentsDirectory();
-    //String dbPath = dbDir.path;
-    final path = join(dbPath, filePath);
+    var databaseFactory = databaseFactoryFfi;
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
-  }
-
-  Future _createDB(Database db, int version) async {
+    var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
     final boolType = 'BOOLEAN NOT NULL';
     final integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
-CREATE TABLE $tableNotes ( 
-  ${NoteFields.id} $idType, 
-  ${NoteFields.isImportant} $boolType,
-  ${NoteFields.number} $integerType,
-  ${NoteFields.title} $textType,
-  ${NoteFields.description} $textType,
-  ${NoteFields.time} $textType
-  )
-''');
+    CREATE TABLE $tableNotes ( 
+    ${NoteFields.id} $idType, 
+    ${NoteFields.isImportant} $boolType,
+    ${NoteFields.number} $integerType,
+    ${NoteFields.title} $textType,
+    ${NoteFields.description} $textType,
+    ${NoteFields.time} $textType
+    )
+    ''');
+
+    return db;
   }
 
   Future<Note> create(Note note) async {
