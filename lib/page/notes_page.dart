@@ -5,6 +5,9 @@ import 'package:sqflite_database_example/model/note.dart';
 import 'package:sqflite_database_example/page/edit_note_page.dart';
 import 'package:sqflite_database_example/page/note_detail_page.dart';
 import 'package:sqflite_database_example/widget/note_card_widget.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:path_provider/path_provider.dart';
 
 class NotesPage extends StatefulWidget {
   @override

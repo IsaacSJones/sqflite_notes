@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:sqflite_database_example/db/notes_database.dart';
 import 'package:sqflite_database_example/model/note.dart';
 import 'package:sqflite_database_example/page/edit_note_page.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class NoteDetailPage extends StatefulWidget {
   final int noteId;

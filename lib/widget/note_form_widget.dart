@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class NoteFormWidget extends StatelessWidget {
   final bool? isImportant;
