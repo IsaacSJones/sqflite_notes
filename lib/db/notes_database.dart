@@ -20,6 +20,7 @@ class NotesDatabase {
     return _database!;
   }
 
+  // Functions blended to work with windows
   Future<Database> _initDB(String filePath) async {
 
     var databaseFactory = databaseFactoryFfi;
